@@ -11,35 +11,33 @@ class ChangeProfile
 
    
     text_area(:aboutme_txta, :id => 'input_00N')
-    button(:aboutmesave_btn, :class => 'md-primary md-hue-1 md-button md-default-theme ng-click-active')
+    button(:aboutmesave_btn, :text => 'Save')
 
 	
     
     def first_time_login_open_profile 
     	sleep (4)
-    	#if firstlogin? then
+    	if firstlogin? then
     		self.completeprofile_btn
     		sleep (4)
     		#self.firsttimeselectlist = 'QA Analist'
-    	#end
-    	#else
-
-    	self.cancelbutton_btn
-		#self.linktoprofile.click
-    	#end
+    		self.cancelbutton_btn
+    	else	
+		self.linktoprofile
+		sleep (2)
+		self.cancelbutton_btn
+    	end
     end
 
     def type_aboutme value
     	sleep (2)
-    	aboutme_txta
-    	sleep (2)
-    	binding.pry
-    	aboutme_txta = value
-		aboutmesave_btn
+    	self.aboutme_txta = value
+		self.aboutmesave_btn
 		sleep (2)
-    	#aboutme_txta.click
-    	aboutme_txta = nil
-    	aboutmesave_btn
+    	self.aboutme_txta
+    	sleep (3)
+    	self.aboutme_txta = nil
+    	self.aboutmesave_btn
 
     end
 
